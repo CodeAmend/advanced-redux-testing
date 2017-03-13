@@ -1,13 +1,20 @@
 import {renderComponent, expect} from '../test_helper';
 import App from '../../src/components/app';
 
-describe('App', () => {
+describe("App", () => {
+  let component;
 
-  it('shows the correct text', () => {
+  beforeEach(() => {
+    component = renderComponent(App);
+  });
 
-    const component = renderComponent(App);
-    expect(component).to.contain("React simple starter");
+  // App should have a child instance of CommentBox
+  it("shows a comment box", () => {
+    expect(component.find('.comment-box')).to.exist;
+  });
 
+  it("shows a comment list", () => {
+    expect(component.find('.comment-list')).to.exist;
   });
 
 });
